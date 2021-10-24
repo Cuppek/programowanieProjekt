@@ -1,0 +1,21 @@
+{
+  "name": "projects/programowanie",
+  "type": "project",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "milosz",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-readline": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Game\\": "src/"
+    }
+  }
+}
