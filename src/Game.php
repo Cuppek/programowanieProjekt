@@ -9,10 +9,9 @@ class Game
     /**
      * @var bool
      */
-    private $run;
+    private bool $run;
 
-    public function run() : bool
+    public function run()
     {
-        return $this->run = true;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Game\Map;
+namespace Game\map;
 
 class Map
 {
@@ -7,10 +7,13 @@ class Map
      * @var array
      */
     public array $map;
+    private array $actualPosition;
 
     public function __construct()
     {
         $this->map = [];
+        $this->actualPosition[0] = 2; // row number
+        $this->actualPosition[1] = 2; // column number
     }
 
     /**
@@ -34,7 +37,7 @@ class Map
 //            ["3.0", "3.1", "3.2", "3.3"]];
     }
 
-    public function showMap() : void //only for development purpose
+    public function showMap() : void //only for development purposes
     {
         foreach ($this->map as $item) {
             foreach ($item as $it) {
@@ -44,27 +47,58 @@ class Map
         }
     }
 
-    public function showPosition($actualPosition)
-    {
-        echo $this->map[$actualPosition[0]][$actualPosition[1]] . PHP_EOL;
-    }
-
-    public function makeMove($actualPosition, $direction) : array
+    public function makeMove($direction)
     {
         switch ($direction) {
             case "up":
-                $actualPosition[0] -= 1;
+                $this->checkRowPosition($this->actualPosition[0] - 1);
                 break;
             case "down":
-                $actualPosition[0] += 1;
+                $this->checkRowPosition($this->actualPosition[0] + 1);
                 break;
             case "right":
-                $actualPosition[1] += 1;
+                $this->checkColumnPosition($this->actualPosition[1] + 1);
                 break;
             case "left":
-                $actualPosition[1] -= 1;
+                $this->checkColumnPosition($this->actualPosition[1] - 1);
                 break;
+            case "show":
+                $this->showActualPosition();
+                break;
+            case "exit":
+                exit(0);
+            default:
+                echo "Choose wisely!" . PHP_EOL;
         }
-        return $actualPosition;
+    }
+
+    private function checkRowPosition($condition)
+    {
+       if (isset($this->map[$condition]))
+       {
+           $this->actualPosition[0] = $condition;
+       } else {
+           $this->endOfMap();
+       }
+    }
+
+    private function checkColumnPosition($condition)
+    {
+        if (isset($this->map[$this->actualPosition[1]][$condition]))
+        {
+            $this->actualPosition[1] = $condition;
+        } else {
+            $this->endOfMap();
+        }
+    }
+
+    public function showActualPosition()
+    {
+        echo $this->map[$this->actualPosition[0]][$this->actualPosition[1]] . PHP_EOL;
+    }
+
+    private function endOfMap()
+    {
+        echo "You can't go there" . PHP_EOL;
     }
 }
