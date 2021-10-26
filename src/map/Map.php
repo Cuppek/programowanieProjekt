@@ -51,15 +51,19 @@ class Map
     {
         switch ($direction) {
             case "up":
+            case "w":
                 $this->checkRowPosition($this->actualPosition[0] - 1);
                 break;
             case "down":
+            case "s":
                 $this->checkRowPosition($this->actualPosition[0] + 1);
                 break;
             case "right":
+            case "d":
                 $this->checkColumnPosition($this->actualPosition[1] + 1);
                 break;
             case "left":
+            case "a":
                 $this->checkColumnPosition($this->actualPosition[1] - 1);
                 break;
             case "show":
