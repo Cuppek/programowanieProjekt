@@ -29,12 +29,6 @@ class Map
                 $this->map[$i][$j] = $i . "." . $j;
             }
         }
-
-//        $this->map = [
-//            ["0.0", "0.1", "0.2", "0.3"],
-//            ["1.0", "1.1", "1.2", "1.3"],
-//            ["2.0", "2.1", "2.2", "2.3"],
-//            ["3.0", "3.1", "3.2", "3.3"]];
     }
 
     public function showMap() : void //only for development purposes
@@ -52,19 +46,19 @@ class Map
         switch ($direction) {
             case "up":
             case "w":
-                $this->checkRowPosition($this->actualPosition[0] - 1);
+                $this->checkRowPositionAndMove($this->actualPosition[0] - 1);
                 break;
             case "down":
             case "s":
-                $this->checkRowPosition($this->actualPosition[0] + 1);
+                $this->checkRowPositionAndMove($this->actualPosition[0] + 1);
                 break;
             case "right":
             case "d":
-                $this->checkColumnPosition($this->actualPosition[1] + 1);
+                $this->checkColumnPositionAndMove($this->actualPosition[1] + 1);
                 break;
             case "left":
             case "a":
-                $this->checkColumnPosition($this->actualPosition[1] - 1);
+                $this->checkColumnPositionAndMove($this->actualPosition[1] - 1);
                 break;
             case "show":
                 $this->showActualPosition();
@@ -76,21 +70,21 @@ class Map
         }
     }
 
-    private function checkRowPosition($condition)
+    private function checkRowPositionAndMove($newPosition)
     {
-       if (isset($this->map[$condition]))
+       if (isset($this->map[$newPosition][$this->actualPosition[1]]))
        {
-           $this->actualPosition[0] = $condition;
+           $this->actualPosition[0] = $newPosition;
        } else {
            $this->endOfMap();
        }
     }
 
-    private function checkColumnPosition($condition)
+    private function checkColumnPositionAndMove($newPosition)
     {
-        if (isset($this->map[$this->actualPosition[1]][$condition]))
+        if (isset($this->map[$this->actualPosition[0]][$newPosition]))
         {
-            $this->actualPosition[1] = $condition;
+            $this->actualPosition[1] = $newPosition;
         } else {
             $this->endOfMap();
         }
