@@ -1,4 +1,5 @@
 <?php
+
 namespace Game\map;
 
 class Map
@@ -22,16 +23,14 @@ class Map
      */
     public function drawMap(int $mapWidth = 0, int $mapHeight = 0)
     {
-        for ($i = 0; $i < $mapHeight; $i++)
-        {
-            for ($j = 0; $j < $mapWidth; $j++)
-            {
+        for ($i = 0; $i < $mapHeight; $i++) {
+            for ($j = 0; $j < $mapWidth; $j++) {
                 $this->map[$i][$j] = $i . "." . $j;
             }
         }
     }
 
-    public function showMap() : void //only for development purposes
+    public function showMap(): void //only for development purposes
     {
         foreach ($this->map as $item) {
             foreach ($item as $it) {
@@ -72,18 +71,16 @@ class Map
 
     private function checkRowPositionAndMove($newPosition)
     {
-       if (isset($this->map[$newPosition][$this->actualPosition[1]]))
-       {
-           $this->actualPosition[0] = $newPosition;
-       } else {
-           $this->endOfMap();
-       }
+        if (isset($this->map[$newPosition][$this->actualPosition[1]])) {
+            $this->actualPosition[0] = $newPosition;
+        } else {
+            $this->endOfMap();
+        }
     }
 
     private function checkColumnPositionAndMove($newPosition)
     {
-        if (isset($this->map[$this->actualPosition[0]][$newPosition]))
-        {
+        if (isset($this->map[$this->actualPosition[0]][$newPosition])) {
             $this->actualPosition[1] = $newPosition;
         } else {
             $this->endOfMap();
