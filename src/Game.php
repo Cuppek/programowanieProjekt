@@ -26,16 +26,16 @@ class Game
         $this->map->map[3][3] = null;
         $this->map->showMap(); // For development purposes
 
-        $this->instruction();
+        $this->showInstruction();
 
         while (true) {
-            $this->map->chooseAction(trim(strtolower(readline())));
+            $this->map->chooseAction($this->userInput());
             echo $this->map->getActualPosition();
             $this->vision->showAround();
         }
     }
 
-    public static function instruction()
+    public static function showInstruction()
     {
         echo "w/a/s/d/show/instruction/exit,quit\n";
         echo "To move you can use up,north / left,west / down,south / right,east as well\n";
@@ -45,5 +45,10 @@ class Game
     {
         echo "Thank you for playing!\n";
         exit(0);
+    }
+
+    private function userInput(): string
+    {
+        return trim(strtolower(readline()));
     }
 }

@@ -14,6 +14,8 @@ class Map
     {
         $this->map = [];
 
+        //TODO: Move staring points to class that sets map size
+
         /**
          * Starting row number
          */
@@ -85,7 +87,7 @@ class Map
                 $this->getActualPosition();
                 break;
             case "instruction":
-                Game::instruction();
+                Game::showInstruction();
                 break;
             case "quit":
             case "exit":
