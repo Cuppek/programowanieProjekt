@@ -2,6 +2,8 @@
 
 namespace Game\map;
 
+use Game\Game;
+
 class Map
 {
     public array $map;
@@ -33,29 +35,38 @@ class Map
 
     public function showMap(): void //only for development purposes
     {
-        foreach ($this->map as $item) {
-            foreach ($item as $it) {
-                echo $it . " ";
+        foreach ($this->map as $item => $it) {
+            foreach ($it as $i => $string) {
+                if ($string !== null) {
+                    echo $string . " ";
+                } else {
+                    echo "X.X ";
+                }
             }
             echo PHP_EOL;
         }
+        echo PHP_EOL;
     }
 
     public function makeMove($direction)
     {
         switch ($direction) {
+            case "north":
             case "up":
             case "w":
                 $this->rowMove($this->actualPosition[0] - 1);
                 break;
+            case "south":
             case "down":
             case "s":
                 $this->rowMove($this->actualPosition[0] + 1);
                 break;
+            case "east":
             case "right":
             case "d":
                 $this->columnMove($this->actualPosition[1] + 1);
                 break;
+            case "west":
             case "left":
             case "a":
                 $this->columnMove($this->actualPosition[1] - 1);
@@ -63,6 +74,10 @@ class Map
             case "show":
                 $this->showActualPosition();
                 break;
+            case "instruction":
+                Game::instruction();
+                break;
+            case "quit":
             case "exit":
                 exit(0);
             default:
