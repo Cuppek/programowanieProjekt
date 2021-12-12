@@ -47,8 +47,8 @@ class Map
 
     public function showMap(): void //only for development purposes
     {
-        foreach ($this->map as $item => $it) {
-            foreach ($it as $i => $string) {
+        foreach ($this->map as $item) {
+            foreach ($item as $string) {
                 if ($string !== null) {
                     echo $string . " ";
                 } else {
