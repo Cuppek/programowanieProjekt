@@ -4,24 +4,25 @@ namespace Game\map;
 
 class Map
 {
-    /**
-     * @var array
-     */
     public array $map;
     private array $actualPosition;
 
     public function __construct()
     {
         $this->map = [];
-        $this->actualPosition[0] = 2; // row number
-        $this->actualPosition[1] = 2; // column number
+
+        /**
+         * Starting row number
+         */
+        $this->actualPosition[0] = 2;
+
+        /**
+         * Starting column number
+         */
+        $this->actualPosition[1] = 2;
     }
 
-    /**
-     * @param int $mapWidth
-     * @param int $mapHeight
-     */
-    public function drawMap(int $mapWidth = 0, int $mapHeight = 0)
+    public function drawMap(int $mapWidth, int $mapHeight)
     {
         for ($i = 0; $i < $mapHeight; $i++) {
             for ($j = 0; $j < $mapWidth; $j++) {
@@ -45,19 +46,19 @@ class Map
         switch ($direction) {
             case "up":
             case "w":
-                $this->checkRowPositionAndMove($this->actualPosition[0] - 1);
+                $this->rowMove($this->actualPosition[0] - 1);
                 break;
             case "down":
             case "s":
-                $this->checkRowPositionAndMove($this->actualPosition[0] + 1);
+                $this->rowMove($this->actualPosition[0] + 1);
                 break;
             case "right":
             case "d":
-                $this->checkColumnPositionAndMove($this->actualPosition[1] + 1);
+                $this->columnMove($this->actualPosition[1] + 1);
                 break;
             case "left":
             case "a":
-                $this->checkColumnPositionAndMove($this->actualPosition[1] - 1);
+                $this->columnMove($this->actualPosition[1] - 1);
                 break;
             case "show":
                 $this->showActualPosition();
@@ -69,21 +70,31 @@ class Map
         }
     }
 
-    private function checkRowPositionAndMove($newPosition)
+    private function checkNewRow($newPosition): bool
     {
-        if (isset($this->map[$newPosition][$this->actualPosition[1]])) {
+        return isset($this->map[$newPosition][$this->actualPosition[1]]);
+    }
+
+    private function checkNewColumn($newPosition): bool
+    {
+        return isset($this->map[$this->actualPosition[0]][$newPosition]);
+    }
+
+    private function rowMove($newPosition)
+    {
+        if ($this->checkNewRow($newPosition)) {
             $this->actualPosition[0] = $newPosition;
         } else {
-            $this->endOfMap();
+            $this->unreachablePosition();
         }
     }
 
-    private function checkColumnPositionAndMove($newPosition)
+    private function columnMove($newPosition)
     {
-        if (isset($this->map[$this->actualPosition[0]][$newPosition])) {
+        if ($this->checkNewColumn($newPosition)) {
             $this->actualPosition[1] = $newPosition;
         } else {
-            $this->endOfMap();
+            $this->unreachablePosition();
         }
     }
 
@@ -92,7 +103,7 @@ class Map
         echo $this->map[$this->actualPosition[0]][$this->actualPosition[1]] . PHP_EOL;
     }
 
-    private function endOfMap()
+    private function unreachablePosition()
     {
         echo "You can't go there" . PHP_EOL;
     }
