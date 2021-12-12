@@ -1,15 +1,16 @@
 <?php
 
-namespace Game\map;
+namespace Game\Map;
 
 use Game\Game;
 
 class Map
 {
     public array $map;
-    private array $actualPosition;
+    public array $actualPosition;
+    private static ?Map $instance = null;
 
-    public function __construct()
+    private function __construct()
     {
         $this->map = [];
 
@@ -22,6 +23,15 @@ class Map
          * Starting column number
          */
         $this->actualPosition[1] = 2;
+    }
+
+    public static function getInstance(): Map
+    {
+        if (static::$instance === null) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
     }
 
     public function drawMap(int $mapWidth, int $mapHeight)
@@ -48,9 +58,9 @@ class Map
         echo PHP_EOL;
     }
 
-    public function makeMove($direction)
+    public function chooseAction($action)
     {
-        switch ($direction) {
+        switch ($action) {
             case "north":
             case "up":
             case "w":
@@ -72,25 +82,26 @@ class Map
                 $this->columnMove($this->actualPosition[1] - 1);
                 break;
             case "show":
-                $this->showActualPosition();
+                $this->getActualPosition();
                 break;
             case "instruction":
                 Game::instruction();
                 break;
             case "quit":
             case "exit":
-                exit(0);
+                Game::endGame();
+                break;
             default:
                 echo "Choose wisely!" . PHP_EOL;
         }
     }
 
-    private function checkNewRow($newPosition): bool
+    public function checkNewRow($newPosition): bool
     {
         return isset($this->map[$newPosition][$this->actualPosition[1]]);
     }
 
-    private function checkNewColumn($newPosition): bool
+    public function checkNewColumn($newPosition): bool
     {
         return isset($this->map[$this->actualPosition[0]][$newPosition]);
     }
@@ -113,9 +124,9 @@ class Map
         }
     }
 
-    public function showActualPosition()
+    public function getActualPosition(): string
     {
-        echo $this->map[$this->actualPosition[0]][$this->actualPosition[1]] . PHP_EOL;
+        return $this->map[$this->actualPosition[0]][$this->actualPosition[1]] . PHP_EOL;
     }
 
     private function unreachablePosition()
