@@ -2,6 +2,7 @@
 
 namespace Game;
 
+use Game\Map\LoadMap;
 use Game\Map\Map;
 use Game\Map\Vision;
 
@@ -21,9 +22,7 @@ class Game
 
     public function run()
     {
-
-        $this->map->drawMap(5, 7); // TODO: Class to set map size and blank points
-        $this->map->map[3][3] = null;
+        $this->map->drawMap(7, 14); // TODO: Class to set map size and blank points
         $this->map->showMap(); // For development purposes
 
         $this->showInstruction();
@@ -31,6 +30,7 @@ class Game
         while (true) {
             $this->map->chooseAction($this->userInput());
             echo $this->map->getActualPosition();
+            echo $this->vision->getFieldDescription();
             $this->vision->showAround();
         }
     }

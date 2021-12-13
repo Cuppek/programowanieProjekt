@@ -1,0 +1,536 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!-- Game map -->
+<world>
+    <!-- Zero row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Nothing to see through the window</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Nothing to see through the window</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- First row -->
+
+    <row>
+        <field>
+            <name>null</name>
+            <desc>You see fields through the window</desc>
+        </field>
+
+        <field>
+            <name>house</name>
+            <desc>Your own house</desc>
+        </field>
+
+        <field>
+            <name>house</name>
+            <desc>Your own house</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see only big walls through the window</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Nothing to see through the window</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Second row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>You see lake behind the window</desc>
+        </field>
+
+        <field>
+            <name>house</name>
+            <desc>Your own house</desc>
+        </field>
+
+        <field>
+            <name>house</name>
+            <desc>Your own house</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Nothing to see through the window</desc>
+        </field>
+
+        <field>
+            <name>house</name>
+            <desc>Someones house</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Nothing to see through the window</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Third row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only high wall is visible here</desc>
+        </field>
+
+        <field>
+            <name>main street</name>
+            <desc>Main street of city</desc>
+        </field>
+
+        <field>
+            <name>tavern</name>
+            <desc>Some drunk people here</desc>
+        </field>
+
+        <field>
+            <name>street</name>
+            <desc>The street is empty</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only high wall of church is visible here</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Fourth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>Street ends with big wall</desc>
+        </field>
+
+        <field>
+            <name>shady alley</name>
+            <desc>Looks terrifying</desc>
+        </field>
+
+        <field>
+            <name>main street</name>
+            <desc>Main street of city</desc>
+        </field>
+
+        <field>
+            <name>tavern</name>
+            <desc>Few drunk people here</desc>
+        </field>
+
+        <field>
+            <name>street</name>
+            <desc>Only kids playing with balls</desc>
+        </field>
+
+        <field>
+            <name>church</name>
+            <desc>It's too quiet here</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see crucifix hanging on the wall</desc>
+        </field>
+    </row>
+
+    <!-- Fifth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only high wall is visible here</desc>
+        </field>
+
+        <field>
+            <name>main street</name>
+            <desc>lots of people here</desc>
+        </field>
+
+        <field>
+            <name>small alley</name>
+            <desc>short path between bigger streets</desc>
+        </field>
+
+        <field>
+            <name>street</name>
+            <desc>You hear lots of screams</desc>
+        </field>
+
+        <field>
+            <name>church</name>
+            <desc>You see one person sitting on bench</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>White and empty wall in front of You</desc>
+        </field>
+    </row>
+
+    <!-- Sixth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only high wall is visible here</desc>
+        </field>
+
+        <field>
+            <name>gate</name>
+            <desc>The only way to get out of that city</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only high wall is visible here</desc>
+        </field>
+
+        <field>
+            <name>castle</name>
+            <desc>You are surrounded by high walls of that majestic building</desc>
+        </field>
+
+        <field>
+            <name>castle</name>
+            <desc>You are surrounded by high walls of that majestic building</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Lots of paintings hanging on the wall</desc>
+        </field>
+    </row>
+
+    <!-- Seventh row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>only deep lake visible</desc>
+        </field>
+
+        <field>
+            <name>lake beach</name>
+            <desc>You see a fishman nearby</desc>
+        </field>
+
+        <field>
+            <name>road</name>
+            <desc>You see two guardians in front of main gate</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see big walls</desc>
+        </field>
+
+        <field>
+            <name>castle</name>
+            <desc>You are surrounded by high walls of that majestic building</desc>
+        </field>
+
+        <field>
+            <name>castle</name>
+            <desc>You are surrounded by high walls of that majestic building</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>Only empty throne in that place, but you can't sit on it</desc>
+        </field>
+    </row>
+
+    <!-- Eighth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>Deep lake visible here</desc>
+        </field>
+
+        <field>
+            <name>lake beach</name>
+            <desc>You hear fish's splashing</desc>
+        </field>
+
+        <field>
+            <name>road</name>
+            <desc>Birds are singing their songs, Two people on horses just rode by</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see big tower</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see big tower</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You see big tower</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Ninth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>That way looks to long for you and not reachable yet</desc>
+        </field>
+
+        <field>
+            <name>road</name>
+            <desc>Just empty road. Isn't it to quiet here?</desc>
+        </field>
+
+        <field>
+            <name>road</name>
+            <desc>Local itinerant trader sitting on the stone next to road</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>It's becoming darker and darker</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>A fallen tree blocks your path</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Tenth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>It's to dark to go there</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>A fallen tree blocks your path</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Eleventh row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>You don't want to go there</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>A fallen tree blocks your path</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Twelfth row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>This path i blocked</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>forest</name>
+            <desc>Only trees are in sight</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>A fallen tree blocks your path</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+
+    <!-- Last row -->
+    <row>
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You can't see anything there</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You can't see anything there</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You can't see anything there</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>You can't see anything there</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+
+        <field>
+            <name>null</name>
+            <desc>-</desc>
+        </field>
+    </row>
+</world>

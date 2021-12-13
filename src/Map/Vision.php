@@ -13,32 +13,38 @@ class Vision
 
     public function showAround()
     {
+        echo "North: ";
         if ($this->map->checkNewRow($this->map->actualPosition[0] - 1)) {
-            echo "North: " . $this->map->map[$this->map->actualPosition[0] - 1][$this->map->actualPosition[1]];
+            echo $this->map->map[$this->map->actualPosition[0] - 1][$this->map->actualPosition[1]];
         } else {
-            echo "North is blocked by big wall!";
+            echo $this->map->plan->getMap()[$this->map->actualPosition[0] - 1][$this->map->actualPosition[1]]->desc;
         }
-        echo " ";
 
+        echo "; South: ";
         if ($this->map->checkNewRow($this->map->actualPosition[0] + 1)) {
-            echo "South: " . $this->map->map[$this->map->actualPosition[0] + 1][$this->map->actualPosition[1]];
+            echo $this->map->map[$this->map->actualPosition[0] + 1][$this->map->actualPosition[1]];
         } else {
-            echo "South is blocked by big wall!";
+            echo $this->map->plan->getMap()[$this->map->actualPosition[0] + 1][$this->map->actualPosition[1]]->desc;
         }
-        echo " ";
 
+        echo "; West: ";
         if ($this->map->checkNewColumn($this->map->actualPosition[1] - 1)) {
-            echo "West: " . $this->map->map[$this->map->actualPosition[0]][$this->map->actualPosition[1] - 1];
+            echo $this->map->map[$this->map->actualPosition[0]][$this->map->actualPosition[1] - 1];
         } else {
-            echo "West is blocked by big wall!";
+            echo $this->map->plan->getMap()[$this->map->actualPosition[0]][$this->map->actualPosition[1] - 1]->desc;
         }
-        echo " ";
 
+        echo "; East: ";
         if ($this->map->checkNewColumn($this->map->actualPosition[1] + 1)) {
-            echo "East: " . $this->map->map[$this->map->actualPosition[0]][$this->map->actualPosition[1] + 1];
+            echo $this->map->map[$this->map->actualPosition[0]][$this->map->actualPosition[1] + 1];
         } else {
-            echo "East is blocked by big wall!";
+            echo $this->map->plan->getMap()[$this->map->actualPosition[0]][$this->map->actualPosition[1] + 1]->desc;
         }
         echo PHP_EOL;
+    }
+
+    public function getFieldDescription()
+    {
+        return $this->map->plan->getMap()[$this->map->actualPosition[0]][$this->map->actualPosition[1]]->desc . PHP_EOL;
     }
 }

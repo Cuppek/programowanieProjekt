@@ -8,13 +8,14 @@ class Map
 {
     public array $map;
     public array $actualPosition;
+    public LoadMap $plan;
     private static ?Map $instance = null;
 
     private function __construct()
     {
-        $this->map = [];
+        $this->plan = new LoadMap();
 
-        //TODO: Move staring points to class that sets map size
+        $this->map = [];
 
         /**
          * Starting row number
@@ -38,9 +39,10 @@ class Map
 
     public function drawMap(int $mapWidth, int $mapHeight)
     {
+        $loadedPlan = $this->plan->getMap();
         for ($i = 0; $i < $mapHeight; $i++) {
             for ($j = 0; $j < $mapWidth; $j++) {
-                $this->map[$i][$j] = $i . "." . $j;
+                $this->map[$i][$j] = $loadedPlan[$i][$j]->name;
             }
         }
     }
@@ -50,7 +52,7 @@ class Map
         foreach ($this->map as $item) {
             foreach ($item as $string) {
                 if ($string !== null) {
-                    echo $string . " ";
+                    echo $string . "\t\t";
                 } else {
                     echo "X.X ";
                 }
@@ -100,12 +102,18 @@ class Map
 
     public function checkNewRow($newPosition): bool
     {
-        return isset($this->map[$newPosition][$this->actualPosition[1]]);
+        if (!isset($this->map[$newPosition][$this->actualPosition[1]])) {
+            return false;
+        }
+        return $this->map[$newPosition][$this->actualPosition[1]] != "null";
     }
 
     public function checkNewColumn($newPosition): bool
     {
-        return isset($this->map[$this->actualPosition[0]][$newPosition]);
+        if (!isset($this->map[$this->actualPosition[0]][$newPosition])) {
+            return false;
+        }
+        return $this->map[$this->actualPosition[0]][$newPosition] != "null";
     }
 
     private function rowMove($newPosition)
