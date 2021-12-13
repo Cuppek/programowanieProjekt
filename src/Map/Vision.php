@@ -11,7 +11,7 @@ class Vision
         $this->map = Map::getInstance();
     }
 
-    public function showAround()
+    public function showAround(): void
     {
         echo "North: ";
         if ($this->map->checkNewRow($this->map->actualPosition[0] - 1)) {
@@ -43,7 +43,7 @@ class Vision
         echo PHP_EOL;
     }
 
-    public function getFieldDescription()
+    public function getFieldDescription(): string
     {
         return $this->map->plan->getMap()[$this->map->actualPosition[0]][$this->map->actualPosition[1]]->desc . PHP_EOL;
     }

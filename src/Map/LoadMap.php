@@ -11,7 +11,7 @@ class LoadMap
         $this->map = simplexml_load_file(__DIR__ . '/world.xml');
     }
 
-    public function getMap()
+    public function getMap(): array
     {
         $i = 0;
         foreach ($this->map->row as $row) {

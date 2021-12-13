@@ -37,7 +37,7 @@ class Map
         return static::$instance;
     }
 
-    public function drawMap(int $mapWidth, int $mapHeight)
+    public function drawMap(int $mapWidth, int $mapHeight): void
     {
         $loadedPlan = $this->plan->getMap();
         for ($i = 0; $i < $mapHeight; $i++) {
@@ -62,7 +62,7 @@ class Map
         echo PHP_EOL;
     }
 
-    public function chooseAction($action)
+    public function chooseAction($action): void
     {
         switch ($action) {
             case "north":
@@ -116,7 +116,7 @@ class Map
         return $this->map[$this->actualPosition[0]][$newPosition] != "null";
     }
 
-    private function rowMove($newPosition)
+    private function rowMove($newPosition): void
     {
         if ($this->checkNewRow($newPosition)) {
             $this->actualPosition[0] = $newPosition;
@@ -125,7 +125,7 @@ class Map
         }
     }
 
-    private function columnMove($newPosition)
+    private function columnMove($newPosition): void
     {
         if ($this->checkNewColumn($newPosition)) {
             $this->actualPosition[1] = $newPosition;
@@ -139,7 +139,7 @@ class Map
         return $this->map[$this->actualPosition[0]][$this->actualPosition[1]] . PHP_EOL;
     }
 
-    private function unreachablePosition()
+    private function unreachablePosition(): void
     {
         echo "You can't go there" . PHP_EOL;
     }
