@@ -4,6 +4,7 @@ namespace Game;
 
 use Game\Map\Map;
 use Game\Map\Vision;
+use Game\Eq\Equipment;
 
 /**
  * Application entry point
@@ -12,18 +13,22 @@ class Game
 {
     private Map $map;
     private Vision $vision;
+    private Equipment $equipment;
 
     public function __construct()
     {
         $this->map = Map::getInstance();
         $this->vision = new Vision();
+        $this->equipment = new Equipment();
     }
 
     public function run()
     {
-        $this->map->drawMap(7, 14); // TODO: Class to set map size and blank points
+        $this->map->drawMap(7, 14); // TODO: Class to set map size based on map file input
 //        $this->map->showMap(); // For development purposes
 
+        $this->equipment->giveEq("basic");
+        var_dump($this->equipment->getItems());
         $this->showInstruction();
 
         while (true) {

@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!-- Basic player equipment -->
+<eq>
+    <item>
+        <name>Sword</name>
+        <desc>Simple but sharp sword</desc>
+    </item>
+
+    <item>
+        <name>Armor</name>
+        <desc>Leather set of clothes</desc>
+    </item>
+
+    <item>
+        <name>Ring</name>
+        <desc>It shines</desc>
+    </item>
+
+    <item>
+        <name>Life flask</name>
+        <desc>Gives you some power</desc>
+    </item>
+</eq>
