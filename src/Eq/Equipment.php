@@ -4,7 +4,7 @@ namespace Game\Eq;
 
 class Equipment
 {
-    private $items;
+    private object $items;
 
     public function __construct()
     {
@@ -18,5 +18,13 @@ class Equipment
     public function getItems()
     {
         return $this->items;
+    }
+
+    public function showEq()
+    {
+        echo "Your things: " . PHP_EOL;
+        foreach ($this->items->item as $item => $name) {
+            echo $name->name . " - " . $name->desc . PHP_EOL;
+        }
     }
 }

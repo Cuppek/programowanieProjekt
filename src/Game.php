@@ -2,6 +2,7 @@
 
 namespace Game;
 
+use Game\Characters\Player;
 use Game\Map\Map;
 use Game\Map\Vision;
 use Game\Eq\Equipment;
@@ -13,7 +14,6 @@ class Game
 {
     private Map $map;
     private Vision $vision;
-    private Equipment $equipment;
 
     public function __construct()
     {
@@ -24,11 +24,10 @@ class Game
 
     public function run()
     {
-        $this->map->drawMap(7, 14); // TODO: Class to set map size based on map file input
+        $this->map->drawMap(7, 14); // TODO: Method to set map size based on map file input
 //        $this->map->showMap(); // For development purposes
+        $player = new Player(10, 3, 0);
 
-        $this->equipment->giveEq("basic");
-        var_dump($this->equipment->getItems());
         $this->showInstruction();
 
         while (true) {
@@ -41,7 +40,7 @@ class Game
 
     public static function showInstruction()
     {
-        echo "w/a/s/d/show/instruction/exit,quit\n";
+        echo "Available commands: w/a/s/d/show/instruction/exit,quit\n";
         echo "To move you can use up,north / left,west / down,south / right,east as well\n";
     }
 
