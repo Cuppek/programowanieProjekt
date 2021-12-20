@@ -4,6 +4,7 @@ namespace Game;
 
 use Game\Characters\Monster;
 use Game\Characters\Player;
+use Game\Combat\Combat;
 use Game\Map\Map;
 use Game\Map\Vision;
 use Game\Eq\Equipment;
@@ -15,23 +16,27 @@ class Game
 {
     private Map $map;
     private Vision $vision;
+    private Player $player;
+    private Monster $enemy;
 
     public function __construct()
     {
         $this->map = Map::getInstance();
         $this->vision = new Vision();
-        $this->equipment = new Equipment();
+        $this->player = new Player(10, 3, 0);
+        $this->enemy = new Monster(7, 2, 0);
     }
 
     public function run()
     {
         $this->map->drawMap(7, 14); // TODO: Method to set map size based on map file input
 //        $this->map->showMap(); // For development purposes
-        $player = new Player(10, 3, 0);
-        $enemy = new Monster(10, 4, 0);
 
-        $combat = new Combat\Combat($player, $enemy);
-        $combat->battle();
+        $this->enemy = new Monster(10, 2, 0);
+        $this->combat();
+
+        $this->enemy = new Monster(5, 1, 0);
+        $this->combat();
 
         $this->showInstruction();
 
@@ -40,6 +45,19 @@ class Game
             echo $this->vision->getFieldDescription();
             $this->vision->showAround();
             $this->map->chooseAction($this->userInput());
+        }
+    }
+
+    private function combat()
+    {
+        $combat = new Combat($this->player, $this->enemy);
+        $combat->battle();
+        if (isset($combat->battleWon)) {
+            if ($combat->isBattleWon()) {
+                unset($this->enemy);
+            } else {
+                $this->player->dead();
+            }
         }
     }
 

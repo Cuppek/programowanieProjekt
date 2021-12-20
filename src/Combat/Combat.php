@@ -6,6 +6,7 @@ class Combat
 {
     public object $player;
     public object $enemy;
+    public bool $battleWon;
 
     public function __construct($player, $enemy)
     {
@@ -21,12 +22,13 @@ class Combat
             $this->showHealthPoints($this->enemy);
             if ($this->enemy->isDead()) {
                 $this->playerWon();
+                $this->setBattleWon(true);
                 break;
             }
             $this->player->gotHit($this->enemy->attackPoints());
             $this->showHealthPoints($this->player);
             if ($this->player->isDead()) {
-                $this->player->dead();
+                $this->setBattleWon(false);
             }
         }
     }
@@ -34,8 +36,8 @@ class Combat
     private function startFight()
     {
         echo "New battle begins." . PHP_EOL;
-        echo "Your HP: " . $this->player->lifePoints . PHP_EOL;
         echo "Enemy HP: " . $this->enemy->lifePoints . PHP_EOL;
+        echo "Your HP: " . $this->player->lifePoints . PHP_EOL;
     }
 
     private function playerWon()
@@ -65,5 +67,15 @@ class Combat
     private function showHealthPoints($character)
     {
         echo $character . " HP: " . $character->lifePoints . PHP_EOL;
+    }
+
+    public function isBattleWon(): bool
+    {
+        return $this->battleWon;
+    }
+
+    public function setBattleWon(bool $battleWon): void
+    {
+        $this->battleWon = $battleWon;
     }
 }
