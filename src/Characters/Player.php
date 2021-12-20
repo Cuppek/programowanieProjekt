@@ -14,4 +14,14 @@ class Player extends Human
         $this->equipment = new Equipment();
         $this->equipment->giveEq("basic");
     }
+
+    public function dead()
+    {
+        exit ("You Died");
+    }
+
+    public function __toString()
+    {
+        return "Player";
+    }
 }

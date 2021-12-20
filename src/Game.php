@@ -2,6 +2,7 @@
 
 namespace Game;
 
+use Game\Characters\Monster;
 use Game\Characters\Player;
 use Game\Map\Map;
 use Game\Map\Vision;
@@ -27,6 +28,10 @@ class Game
         $this->map->drawMap(7, 14); // TODO: Method to set map size based on map file input
 //        $this->map->showMap(); // For development purposes
         $player = new Player(10, 3, 0);
+        $enemy = new Monster(10, 4, 0);
+
+        $combat = new Combat\Combat($player, $enemy);
+        $combat->battle();
 
         $this->showInstruction();
 

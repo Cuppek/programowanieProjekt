@@ -13,6 +13,21 @@ abstract class Character
         $this->strength = $strength;
     }
 
+    public function __toString()
+    {
+        return "Character";
+    }
+
+    public function attackPoints(): int
+    {
+        return $this->strength;
+    }
+
+    public function gotHit($attackPoints): void
+    {
+        $this->lifePoints -= $attackPoints;
+    }
+
     public function isDead(): bool
     {
         return ($this->lifePoints <= 0);

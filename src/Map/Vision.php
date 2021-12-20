@@ -40,7 +40,7 @@ class Vision
         } else {
             echo $this->map->plan->getMap()[$this->map->actualPosition[0]][$this->map->actualPosition[1] + 1]->desc;
         }
-        echo ":" . PHP_EOL;
+        echo ";" . PHP_EOL;
     }
 
     public function getFieldDescription(): string

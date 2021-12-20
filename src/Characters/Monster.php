@@ -11,4 +11,9 @@ class Monster extends Character
         parent::__construct($lifePoints, $strength);
         $this->toxicity = $toxicity;
     }
+
+    public function __toString()
+    {
+        return "Monster";
+    }
 }

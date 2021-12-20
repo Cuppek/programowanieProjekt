@@ -37,7 +37,7 @@ class Map
         return static::$instance;
     }
 
-    public function drawMap(int $mapWidth, int $mapHeight): void
+    public function drawMap(int $mapWidth, int $mapHeight): void // setMap()
     {
         $loadedPlan = $this->plan->getMap();
         for ($i = 0; $i < $mapHeight; $i++) {
