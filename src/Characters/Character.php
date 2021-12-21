@@ -20,7 +20,7 @@ abstract class Character
 
     public function attackPoints(): int
     {
-        return $this->strength;
+        return rand(0,$this->strength);
     }
 
     public function gotHit($attackPoints): void

@@ -31,16 +31,11 @@ class Game
         $this->map->drawMap(7, 14); // TODO: Method to set map size based on map file input
 //        $this->map->showMap(); // For development purposes
 
-        $this->enemy = new Monster(10, 2, 0);
-        $this->combat();
-
-        $this->enemy = new Monster(5, 1, 0);
-        $this->combat();
-
         $this->showInstruction();
 
         while (true) {
             echo $this->map->getActualPosition();
+            $this->randomBattle();
             echo $this->vision->getFieldDescription();
             $this->vision->showAround();
             $this->map->chooseAction($this->userInput());
@@ -57,6 +52,15 @@ class Game
             } else {
                 $this->player->dead();
             }
+        }
+    }
+
+    private function randomBattle()
+    {
+        $random = rand(0,1);
+        if ($random === 1){
+            $this->enemy = new Monster(rand(3,10), rand(1,6), 0);
+            $this->combat();
         }
     }
 

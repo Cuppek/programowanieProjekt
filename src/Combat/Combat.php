@@ -7,6 +7,7 @@ class Combat
     public object $player;
     public object $enemy;
     public bool $battleWon;
+    private int $attackPoints;
 
     public function __construct($player, $enemy)
     {
@@ -18,7 +19,8 @@ class Combat
     {
         $this->startFight();
         while ($this->playerAction()) {
-            $this->enemy->gotHit($this->player->attackPoints());
+            $this->setAttackPoints($this->player->attackPoints());
+            $this->enemy->gotHit($this->getAttackPoints());
             $this->showAttackStats($this->player);
             $this->showHealthPoints($this->enemy);
             if ($this->enemy->isDead()) {
@@ -26,11 +28,14 @@ class Combat
                 $this->setBattleWon(true);
                 break;
             }
-            $this->player->gotHit($this->enemy->attackPoints());
+            $this->setAttackPoints($this->enemy->attackPoints());
+            $this->player->gotHit($this->attackPoints);
             $this->showAttackStats($this->enemy);
             $this->showHealthPoints($this->player);
             if ($this->player->isDead()) {
+                echo "lol\n";
                 $this->setBattleWon(false);
+                break;
             }
         }
     }
@@ -40,6 +45,7 @@ class Combat
         echo "New battle begins." . PHP_EOL;
         echo "Enemy HP: " . $this->enemy->lifePoints . PHP_EOL;
         echo "Your HP: " . $this->player->lifePoints . PHP_EOL;
+        echo "Use a to attack, anything else to run away." . PHP_EOL;
     }
 
     private function playerWon()
@@ -72,9 +78,12 @@ class Combat
             $input = $this->playerInput();
             if ($input === "y") {
                 return true;
-            } else if ($input === "n") {
-                return false;
+            } else {
+                if ($input === "n") {
+                    return false;
+                }
             }
+            echo "y/n" . PHP_EOL;
         }
     }
 
@@ -93,7 +102,7 @@ class Combat
 
     private function showAttackStats($character)
     {
-        echo $character . " attacks with power: " . $character->strength . PHP_EOL;
+        echo $character . " attacks with power: " . $this->getAttackPoints() . PHP_EOL;
     }
 
     private function showHealthPoints($character)
@@ -109,5 +118,15 @@ class Combat
     public function setBattleWon(bool $battleWon): void
     {
         $this->battleWon = $battleWon;
+    }
+
+    public function getAttackPoints(): int
+    {
+        return $this->attackPoints;
+    }
+
+    public function setAttackPoints(int $attackPoints): void
+    {
+        $this->attackPoints = $attackPoints;
     }
 }
