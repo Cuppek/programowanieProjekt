@@ -22,8 +22,7 @@ class Game
     {
         $this->map = Map::getInstance();
         $this->vision = new Vision();
-        $this->player = new Player(10, 3, 0);
-        $this->enemy = new Monster(7, 2, 0);
+        $this->player = new Player(25, 3, 0);
     }
 
     public function run()
@@ -57,9 +56,8 @@ class Game
 
     private function randomBattle()
     {
-        $random = rand(0,1);
-        if ($random === 1){
-            $this->enemy = new Monster(rand(3,10), rand(1,6), 0);
+        if (rand(0, 1) === 1) {
+            $this->enemy = new Monster(rand(3, 10), rand(1, 6), 0);
             $this->combat();
         }
     }
