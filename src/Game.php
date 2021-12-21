@@ -7,7 +7,6 @@ use Game\Characters\Player;
 use Game\Combat\Combat;
 use Game\Map\Map;
 use Game\Map\Vision;
-use Game\Eq\Equipment;
 
 /**
  * Application entry point
@@ -64,7 +63,7 @@ class Game
     public static function showInstruction()
     {
         echo "Available commands: w/a/s/d/show/instruction/exit,quit\n";
-        echo "To move you can use up,north / left,west / down,south / right,east as well\n";
+        echo "To move you can use up, north / left, west / down, south / right, east as well\n";
     }
 
     public static function endGame()

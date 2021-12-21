@@ -19,6 +19,7 @@ class Combat
         $this->startFight();
         while ($this->playerAction()) {
             $this->enemy->gotHit($this->player->attackPoints());
+            $this->showAttackStats($this->player);
             $this->showHealthPoints($this->enemy);
             if ($this->enemy->isDead()) {
                 $this->playerWon();
@@ -26,6 +27,7 @@ class Combat
                 break;
             }
             $this->player->gotHit($this->enemy->attackPoints());
+            $this->showAttackStats($this->enemy);
             $this->showHealthPoints($this->player);
             if ($this->player->isDead()) {
                 $this->setBattleWon(false);
@@ -52,16 +54,46 @@ class Combat
 
     private function playerAction(): bool
     {
-        if ($this->playerMove() === "a"){
+        if ($this->playerAttack()) {
             return true;
         }
-        $this->runAway();
+        if ($this->runAwayConfirmation()) {
+            $this->runAway();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private function runAwayConfirmation(): bool
+    {
+        echo "Do You really want to end battle this way? (y/n)" . PHP_EOL;
+        while (true) {
+            $input = $this->playerInput();
+            if ($input === "y") {
+                return true;
+            } else if ($input === "n") {
+                return false;
+            }
+        }
+    }
+
+    private function playerAttack(): bool
+    {
+        if ($this->playerInput() === "a") {
+            return true;
+        }
         return false;
     }
 
-    private function playerMove(): string
+    private function playerInput(): string
     {
         return trim(strtolower(readline()));
+    }
+
+    private function showAttackStats($character)
+    {
+        echo $character . " attacks with power: " . $character->strength . PHP_EOL;
     }
 
     private function showHealthPoints($character)
